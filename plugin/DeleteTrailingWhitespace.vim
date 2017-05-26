@@ -9,6 +9,7 @@
 " Maintainer:	Ingo Karkat <ingo@karkat.de>
 "
 " REVISION	DATE		REMARKS
+"   1.05        26-Jul-2017     Delete autocmd
 "   1.04.006	14-Jun-2013	Minor: Make substitute() robust against
 "				'ignorecase'.
 "   1.04.005	28-Dec-2012	Minor: Correct lnum for no-modifiable buffer
@@ -40,16 +41,6 @@ endif
 if ! exists('g:DeleteTrailingWhitespace_ChoiceAffectsHighlighting')
     let g:DeleteTrailingWhitespace_ChoiceAffectsHighlighting = 1
 endif
-
-
-
-"- autocmds --------------------------------------------------------------------
-
-augroup DeleteTrailingWhitespace
-    autocmd!
-    autocmd BufWritePre * try | call DeleteTrailingWhitespace#InterceptWrite() | catch /^DeleteTrailingWhitespace:/ | echoerr substitute(v:exception, '^\CDeleteTrailingWhitespace:\s*', '', '') | endtry
-augroup END
-
 
 "- commands --------------------------------------------------------------------
 
